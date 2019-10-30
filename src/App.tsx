@@ -1,25 +1,26 @@
-import React from "react";
-import "./App.css";
-import { Button } from "antd";
-import Style from "./hello.less";
-import "./hello.less";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 const App: React.FC = () => {
-  const openMenu = () => {
-    debugger;
-    console.log(1);
-  };
-
-  console.log(Style);
-
   return (
     <div className="App">
-      hello world
-      <div className={Style.hello}>dsdfadfasdf</div>
-      <button onClick={openMenu}>hello</button>
-      <Button type="primary">But9999ton</Button>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
-};
+}
 
 export default App;
