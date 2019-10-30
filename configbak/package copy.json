@@ -8,11 +8,8 @@
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.3",
     "antd": "^3.24.3",
-    "babel-plugin-import": "^1.12.2",
     "customize-cra": "^0.8.0",
     "husky": "^3.0.9",
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
     "react": "^16.11.0",
@@ -22,10 +19,9 @@
     "typescript": "3.6.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "analyze": "react-app-rewired build --analyze",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -53,8 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "webpack-bundle-analyzer": "^3.6.0"
   }
 }
