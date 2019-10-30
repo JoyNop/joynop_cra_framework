@@ -15,7 +15,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       hello world
-      <div className={"hello"}>dsdfadfasdf</div>
+      <div className={Style.hello}>dsdfadfasdf</div>
       <button onClick={openMenu}>hello</button>
       <Button type="primary">But9999ton</Button>
     </div>
