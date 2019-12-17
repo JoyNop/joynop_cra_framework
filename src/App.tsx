@@ -2,16 +2,21 @@ import React from "react";
 import "./App.css";
 import { Button } from "antd";
 import * as Style from "./a.module.less";
-import "./b.less";
+import { LiveApp } from "./livedemo/live.app";
 const App: React.FC = () => {
+  const openMenu = () => {
+    debugger;
+    console.log(1);
+  };
   console.log(Style);
 
   return (
     <div className="App">
-      hellodsfa sdf
-      <div className={Style.hello}>helllo</div>
-      <div className={"helloxxx"}>helllo</div>
-      <Button type="primary">Button</Button>
+      hello world
+      <div className={Style.Hello}>hellllllllllllllllllo</div>
+      <button onClick={openMenu}>hello</button>
+      <Button type="primary">But9999ton</Button>
+      <LiveApp />
     </div>
   );
 };
