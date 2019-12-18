@@ -41,17 +41,17 @@
 
 ![img](./docs/img/20191218155632.jpg)
 
-10.  
+10. 支持自定义变量 可通过如下命令进行测试
 <details>
   <summary>完美支持自定义环境变量</summary>
   <p>Windows (cmd.exe)</p>
-<pre><code> set "REACT_APP_NOT_SECRET_CODE=abcdef" && npm start</pre></code> 
-(Note: Quotes around the variable assignment are required to avoid a trailing whitespace.)
+<pre><code> set "REACT_APP_NOT_SECRET_CODE=abcdef" && yarn start</pre></code> 
+ 
 
 <p>Windows (Powershell)</p>
-<pre><code>($env:REACT_APP_NOT_SECRET_CODE = "abcdef") -and (npm start)</pre></code> 
+<pre><code>($env:REACT_APP_NOT_SECRET_CODE = "abcdef") -and (yarn start)</pre></code> 
 <p>Linux, macOS (Bash)</p>
-<pre><code>REACT_APP_NOT_SECRET_CODE=abcdef npm start</pre></code> 
+<pre><code>REACT_APP_NOT_SECRET_CODE=abcdef yarn start</pre></code> 
 </details>
 
 
