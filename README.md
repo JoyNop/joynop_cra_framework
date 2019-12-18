@@ -37,5 +37,8 @@
 
 8. 仅通过nginx,Caddy搭建简单的服务即可，减轻服务端压力
 
+9. 支持vscode调试，断点，debugger更方便 ，F5即可
 
-**支持eject，但不建议eject，通过`customize-cra`扩展`WebPack`,可以保证`react-scripts`不会因某些支持库版本问题影响整个项目，可以顺利升级`react-scripts`**
+![img](/docs/img/20191218155632.jpg)
+
+**支持eject，但不建议eject，通过`customize-cra`扩展`WebPack`,可以保证`react-scripts`的稳定性，不会因某些支持库版本问题影响整个项目，可以顺利升级`react-scripts`**
