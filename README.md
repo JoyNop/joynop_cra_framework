@@ -33,5 +33,9 @@
     
     可直接上传到CDN，做CDN全球节点部署，解决网络拥塞问题，提高网站响应速度和可用性，降低源站压力  
 
-7. 如果您需要通过外部变量控制，可通过`Dockerfile` 运行不同的命令（目前想到的是，通过Docker运行某个脚本，通过脚本获取变量后，执行对应的build选项）
+7. 如果您需要通过外部变量控制，可通过`Dockerfile` 通过Docker运行某个脚本，通过脚本获取变量后，执行build命令
 
+8. 仅通过nginx,Caddy搭建简单的服务即可，减轻服务端压力
+
+
+**支持eject，但不建议eject，通过`customize-cra`扩展`WebPack`,可以保证`react-scripts`不会因某些支持库版本问题影响整个项目，可以顺利升级`react-scripts`**
