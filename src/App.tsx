@@ -19,6 +19,8 @@ const App: React.FC = () => {
       <div className={Style.Hello}>hellllllllllllllllllo</div>
       <button onClick={openMenu}>hello</button>
       <Button type="primary">But9999ton</Button>
+      66{process.env.REACT_APP_NOT_SECRET_CODE}666
+      <input value={process.env.REACT_APP_NOT_SECRET_CODE} />
       <LiveApp />
       <TabApp />
     </div>

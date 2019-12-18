@@ -39,6 +39,23 @@
 
 9. 支持vscode调试，断点，debugger更方便 ，F5即可
 
-![img](/docs/img/20191218155632.jpg)
+![img](./docs/img/20191218155632.jpg)
+
+10.  
+<details>
+  <summary>完美支持自定义环境变量</summary>
+  <p>Windows (cmd.exe)</p>
+<pre><code> set "REACT_APP_NOT_SECRET_CODE=abcdef" && npm start</pre></code> 
+(Note: Quotes around the variable assignment are required to avoid a trailing whitespace.)
+
+<p>Windows (Powershell)</p>
+<pre><code>($env:REACT_APP_NOT_SECRET_CODE = "abcdef") -and (npm start)</pre></code> 
+<p>Linux, macOS (Bash)</p>
+<pre><code>REACT_APP_NOT_SECRET_CODE=abcdef npm start</pre></code> 
+</details>
+
+
+
+
 
 **支持eject，但不建议eject，通过`customize-cra`扩展`WebPack`,可以保证`react-scripts`的稳定性，不会因某些支持库版本问题影响整个项目，可以顺利升级`react-scripts`**
