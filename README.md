@@ -37,7 +37,7 @@
 
 8. 仅通过nginx,Caddy搭建简单的服务即可，减轻服务端压力
 
-9. 支持vscode调试，断点，debugger更方便 ，F5即可
+9. 支持vscode调试，断点，debugger ，F5即可
 
 ![img](./docs/img/20191218155632.jpg)
 
