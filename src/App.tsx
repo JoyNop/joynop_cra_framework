@@ -11,6 +11,8 @@ const App: React.FC = () => {
   };
   console.log(Style);
 
+  console.log("ENV:", process.env.REACT_APP_ENV);
+
   return (
     <div className="App">
       hello world
