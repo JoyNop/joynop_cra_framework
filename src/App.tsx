@@ -21,6 +21,7 @@ const App: React.FC = () => {
       <Button type="primary">But9999ton</Button>
       66{process.env.REACT_APP_NOT_SECRET_CODE}666
       <input value={process.env.REACT_APP_NOT_SECRET_CODE} />
+      <input value={process.env.REACT_APP_HANRUI_1} />
       <LiveApp />
       <TabApp />
     </div>
