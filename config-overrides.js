@@ -7,7 +7,7 @@ module.exports = override(
     "reportFilename": "report.html",
   }, true),
   fixBabelImports('import', {
-    libraryName: 'antd',
+    libraryName: ['antd'],
     libraryDirectory: 'es',
     // style: 'css',
     style: true,

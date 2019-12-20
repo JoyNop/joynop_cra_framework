@@ -1,29 +1,33 @@
 import React from "react";
 import "./App.css";
-import { Button } from "antd";
-import * as Style from "./a.module.less";
-import { LiveApp } from "./livedemo/live.app";
-import { TabApp } from "./tabdemo/tab";
-const App: React.FC = () => {
-  const openMenu = () => {
-    debugger;
-    console.log(1);
-  };
-  console.log(Style);
+import { OldApp } from "./oldApp";
 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { SiderLayout } from "./layout";
+// import { PrivateRoute } from "./utils/privateRoutes";
+
+const App: React.FC = () => {
   console.log("ENV:", process.env.REACT_APP_ENV);
 
   return (
     <div className="App">
-      hello world
-      <div className={Style.Hello}>hellllllllllllllllllo</div>
-      <button onClick={openMenu}>hello</button>
-      <Button type="primary">But9999ton</Button>
-      66{process.env.REACT_APP_NOT_SECRET_CODE}666
-      <input value={process.env.REACT_APP_NOT_SECRET_CODE} />
-      <input value={process.env.REACT_APP_HANRUI_1} />
-      <LiveApp />
-      <TabApp />
+      <React.Fragment>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={OldApp} />
+            {/* <Route exact path='/signin' component={DbCloudSignin} />
+            <SiderLayout {...this.props}>
+              <PrivateRoute isSignIn={false} exact path='/' component={Home} />
+              <PrivateRoute isSignIn={true} exact path='/feedback' component={FeedBack} />
+            </SiderLayout> */}
+            <Route
+              render={() => {
+                return <p>Not Found</p>;
+              }}
+            />
+          </Switch>
+        </Router>
+      </React.Fragment>
     </div>
   );
 };
