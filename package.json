@@ -12,11 +12,11 @@
     "@webnode/livedata": "^1.0.3",
     "antd": "^3.24.3",
     "babel-plugin-import": "^1.12.2",
+    "babel-polyfill": "^6.26.0",
     "cross-env": "^6.0.3",
     "customize-cra": "^0.8.0",
     "husky": "^3.0.9",
     "less": "^3.10.3",
-    "less-loader": "^5.0.0",
     "lint-staged": "^9.4.2",
     "lodash": "^4.17.15",
     "prettier": "^1.18.2",
@@ -26,6 +26,10 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "typescript": "3.6.4"
+  },
+  "devDependencies": {
+    "less-loader": "^5.0.0",
+    "webpack-bundle-analyzer": "^3.6.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -60,8 +64,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "webpack-bundle-analyzer": "^3.6.0"
   }
 }

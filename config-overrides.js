@@ -7,13 +7,17 @@ module.exports = override(
     "reportFilename": "report.html",
   }, true),
   fixBabelImports('import', {
-    libraryName: ['antd'],
+    libraryName: 'antd',
     libraryDirectory: 'es',
     // style: 'css',
     style: true,
   }),
+  fixBabelImports("lodash", {
+    libraryDirectory: "",
+    camel2DashComponentName: false
+  }),
   addLessLoader({
     javascriptEnabled: true,
-    modifyVars: { '@primary-color': '#1DA57A' },
+    modifyVars: { '@primary-color': 'red' },
   }) ,
 ) 

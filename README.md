@@ -41,9 +41,11 @@
 
 9. 支持vscode调试，断点，debugger ，F5即可
 
+10. 将`LiveData`兼容至`IE11`
+
 ![img](./docs/img/20191218155632.jpg)
 
-10. 支持自定义变量 可通过如下命令进行测试
+  支持自定义变量 可通过如下命令进行测试
 <details>
   <summary>完美支持自定义环境变量</summary>
   <p>Windows (cmd.exe)</p>
