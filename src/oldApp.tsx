@@ -66,6 +66,6 @@ export class OldApp extends React.Component {
   };
   componentDidMount() {
     this.init();
-    console.log(process.env.HANRUI_ENV as any);
+    console.log(process.env.REACT_APP_NOT_SECRET_CODE);
   }
 }
