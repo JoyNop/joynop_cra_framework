@@ -66,5 +66,6 @@ export class OldApp extends React.Component {
   };
   componentDidMount() {
     this.init();
+    console.log(process.env.HANRUI_ENV as any);
   }
 }
