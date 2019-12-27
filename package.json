@@ -9,7 +9,9 @@
   },
   "license": "GPL-3.0",
   "dependencies": {
+    "@loadable/component": "^5.11.0",
     "@types/jest": "24.0.20",
+    "@types/loadable__component": "^5.10.0",
     "@types/lodash": "^4.14.149",
     "@types/node": "12.11.7",
     "@types/react": "16.9.11",
@@ -30,14 +32,15 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "typescript": "3.6.4"
   },
   "devDependencies": {
-    "less-loader": "^5.0.0",
-    "prettier": "^1.18.2",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.2",
     "cross-env": "^6.0.3",
+    "husky": "^3.0.9",
+    "less-loader": "^5.0.0",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
     "redux-devtools-extension": "^2.13.8",
     "webpack-bundle-analyzer": "^3.6.0"
   },

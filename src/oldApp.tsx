@@ -7,6 +7,7 @@ import { chunk } from "lodash";
 import axios from "./utils/http";
 import Counter from "./container/CounterCon";
 import Container from "./container/Container";
+import { Link } from "react-router-dom";
 export class OldApp extends React.Component {
   postList: Array<any> = [];
   render() {
@@ -19,6 +20,9 @@ export class OldApp extends React.Component {
     let aaa = chunk(bbb, 6);
     return (
       <div className={Style.Page}>
+        <Button>
+          <Link to="/user">user</Link>
+        </Button>
         <div className={`${Style.Hello}${Style.Item}`}>Less 检测</div>
         <button onClick={openMenu}>Debugger测试</button>
         <Button type="primary">But9999ton</Button>
