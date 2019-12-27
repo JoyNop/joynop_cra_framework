@@ -5,6 +5,8 @@ import { Button, List, Card } from "antd";
 import { TabApp } from "./tabdemo/tab";
 import { chunk } from "lodash";
 import axios from "./utils/http";
+
+import Container from "./container/Container";
 export class OldApp extends React.Component {
   postList: Array<any> = [];
   render() {
@@ -16,13 +18,23 @@ export class OldApp extends React.Component {
     let bbb = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let aaa = chunk(bbb, 6);
     return (
-      <div>
-        <div className={Style.Hello}>hellllllllllllllllllo</div>
-        <button onClick={openMenu}>hello</button>
+      <div className={Style.Page}>
+        <div className={`${Style.Hello}${Style.Item}`}>Less 检测</div>
+        <button onClick={openMenu}>Debugger测试</button>
         <Button type="primary">But9999ton</Button>
         <Button type="primary" onClick={this.errorPost}>
-          error post
+          错误请求检测
         </Button>
+        <div className={Style.Item}>
+          LiveData Test 6 <LiveApp />
+        </div>
+        <div className={Style.Item}>
+          Tab <TabApp />{" "}
+        </div>
+        <div className={Style.Item}>
+          {" "}
+          <Container value={0} />
+        </div>
         66{process.env.REACT_APP_NOT_SECRET_CODE}666
         <input value={process.env.REACT_APP_NOT_SECRET_CODE} />
         <input value={process.env.REACT_APP_HANRUI_1} />
@@ -44,8 +56,6 @@ export class OldApp extends React.Component {
             </List.Item>
           )}
         />
-        <LiveApp />
-        <TabApp />
       </div>
     );
   }

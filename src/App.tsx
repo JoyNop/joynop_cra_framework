@@ -10,7 +10,7 @@ const App: React.FC = () => {
   console.log("ENV:", process.env.REACT_APP_ENV);
 
   return (
-    <div className="App">
+    <div>
       <React.Fragment>
         <Router>
           <Switch>
