@@ -5,7 +5,7 @@ import { Button, List, Card } from "antd";
 import { TabApp } from "./tabdemo/tab";
 import { chunk } from "lodash";
 import axios from "./utils/http";
-
+import Counter from "./container/CounterCon";
 import Container from "./container/Container";
 export class OldApp extends React.Component {
   postList: Array<any> = [];
@@ -34,6 +34,7 @@ export class OldApp extends React.Component {
         <div className={Style.Item}>
           {" "}
           <Container value={0} />
+          <Counter />
         </div>
         66{process.env.REACT_APP_NOT_SECRET_CODE}666
         <input value={process.env.REACT_APP_NOT_SECRET_CODE} />
