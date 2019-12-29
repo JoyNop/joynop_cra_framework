@@ -1,5 +1,5 @@
 import { DECREMENT, DECREMENT_TYPE, INCREMENT, INCREMENT_TYPE } from "../const";
-
+export * from "./userAction";
 export interface IINCREMENTAction {
   type: INCREMENT_TYPE;
 }
