@@ -8,15 +8,16 @@ export interface IProps {
   getUserList: () => void;
   // onDecrement: () => void;
 }
-export class UserList extends React.PureComponent<IProps> {
+export class UserList extends React.Component<IProps> {
   render() {
     const { getUserList, state } = this.props;
-    console.log(this.props);
+    console.log(state.isLoading);
     return (
       <div>
         777
         <Button onClick={getUserList}>ddd</Button>
         <List
+          loading={state.isLoading}
           itemLayout="horizontal"
           dataSource={state.list}
           renderItem={(item: any) => (

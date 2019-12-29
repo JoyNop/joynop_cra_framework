@@ -1,16 +1,19 @@
-import { GET_USERLIST } from "../types";
-
+// import { GET_USERLIST, USERLIST_LOADING } from "../types";
+import { EUserList } from "../types";
+import { IInitialState } from "../types";
 const initialState = {
-  userList: {
-    isLoading: false,
-    list: []
-  }
+  isLoading: true,
+  list: []
 };
 
-export const userReducer = (state = initialState.userList, action: any) => {
-  console.log(action);
+export const userReducer = (state = initialState, action: IInitialState) => {
   switch (action.type) {
-    case GET_USERLIST:
+    case EUserList.USERLIST_LOADING:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case EUserList.USERLIST_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -21,15 +24,3 @@ export const userReducer = (state = initialState.userList, action: any) => {
       return state;
   }
 };
-
-// export const User = () => {
-//   return (dispatch) => {
-//     axios.get('/api/headerList.json')
-//       .then((res) => {
-//         const data = res.data;
-//         dispatch(changeList(data.data))
-//       })
-//       .catch(() => {
-//         console.log('catch')
-//       })
-//   }
