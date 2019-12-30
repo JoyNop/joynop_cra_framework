@@ -5,9 +5,6 @@ jobs:
   lint-and-test:
     name: Test
     runs-on: ubuntu-latest
-    strategy:
-     matrix:
-        node-version: [8.x, 10.x, 12.x]
     steps:
     - uses: actions/checkout@master
     - name: Install
@@ -21,6 +18,5 @@ jobs:
     - name: Test
       uses: CultureHQ/actions-yarn@master
       with:
-      args: test
-   env:
-    CI: true
+        args: test
+ 
