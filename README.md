@@ -45,8 +45,6 @@
 
 11. 增加对Redux的适配
 
-![img](./docs/img/20191218155632.jpg)
-
   支持自定义变量 可通过如下命令进行测试
 <details>
   <summary>完美支持自定义环境变量</summary>
