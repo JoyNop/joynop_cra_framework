@@ -1,6 +1,6 @@
 // import { GET_USERLIST, USERLIST_LOADING } from "../types";
-import { EUserList } from "../types";
-import { IInitialState } from "../types";
+import { EUserList } from "../service/userTypes";
+import { IInitialState } from "../../store/types";
 const initialState = {
   isLoading: true,
   list: []

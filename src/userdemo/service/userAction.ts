@@ -1,6 +1,8 @@
 import { Dispatch } from "redux";
 import axios from "../../utils/http";
-import { EUserList, IInitialState } from "../types";
+import { EUserList } from "../service/userTypes";
+
+import { IInitialState } from "../../store/types";
 
 export const getUserList = () => async (dispatch: Dispatch<IInitialState>) => {
   dispatch({ type: EUserList.USERLIST_LOADING });

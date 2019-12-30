@@ -1,4 +1,4 @@
-export * from "./userTypes";
+// export * from "../../userdemo/service/userTypes";
 
 export interface IInitialState {
   type: string;
