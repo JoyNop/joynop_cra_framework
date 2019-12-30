@@ -1,6 +1,10 @@
 # JoyNop React Framework
  
 
+*[JoyNop React Framework Document](https://github.com/JoyNop/joynop_cra_framework/wiki)*
+
+*[JoyNop React Framework Release](https://github.com/JoyNop/joynop_cra_framework/releases/latest)*
+
 - TypeScript & Antd & Less
 
 1. `yarn add`  Install your dependencies
