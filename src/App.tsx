@@ -10,7 +10,7 @@ import { Spin } from "antd";
 const UserCom = loadable(() => import("./userdemo/userPage"), {
   fallback: <Spin />
 });
-const PostDemo = loadable(() => import("./postdemo/post"), {
+const TodoDemo = loadable(() => import("./todolist/todoPage"), {
   fallback: <Spin />
 });
 
@@ -25,7 +25,7 @@ const App: React.FC = () => {
             <JoyNopLayout>
               <Route exact path="/" component={OldApp} />
               <Route exact path="/user" component={UserCom} />
-              <Route exact path="/post" component={PostDemo} />
+              <Route exact path="/todo" component={TodoDemo} />
               {/*  <SiderLayout {...this.props}>
               <PrivateRoute isSignIn={false} exact path='/' component={Home} />
               <PrivateRoute isSignIn={true} exact path='/feedback' component={FeedBack} />

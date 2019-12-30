@@ -2,14 +2,15 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { userReducer } from "./reducers";
+import { userReducer, todoReducer } from "./reducers";
 // import { chatReducer } from "./chat/reducers";
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  todo: todoReducer
 });
 
-export type AppState = ReturnType<typeof userReducer>;
+export type AppState = ReturnType<typeof rootReducer>;
 
 export const configureStore = () => {
   const middlewares = [thunkMiddleware];
