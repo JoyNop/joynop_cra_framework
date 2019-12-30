@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { OldApp } from "./oldApp";
 import loadable from "@loadable/component";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { JoyNopLayout } from "./common";
 import { Spin } from "antd";
 // import { SiderLayout } from "./layout";
