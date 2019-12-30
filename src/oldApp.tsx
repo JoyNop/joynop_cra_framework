@@ -25,7 +25,7 @@ export class OldApp extends React.Component {
           <Link to="/usdddddder">error Link</Link>
         </Button>
         <Button>
-          <Link to="/post">post</Link>
+          <Link to="/todo">todo</Link>
         </Button>
         <div className={`${Style.Hello}${Style.Item}`}>Less 检测</div>
         <button onClick={openMenu}>Debugger测试</button>

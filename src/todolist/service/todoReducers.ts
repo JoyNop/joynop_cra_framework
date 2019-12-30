@@ -44,8 +44,8 @@ export const todoReducer = (state = initialState, action: IInitialState) => {
     case ETodoTypes.TODO_ADD_ITEM:
       return {
         ...state,
-        isLoading: false,
-        todolist: action.payload as Array<ITodo>
+        isLoading: false
+        // todolist: action.payload as Array<ITodo>
       };
     case ETodoTypes.TODO_REMOVE_ITEM:
       return {
