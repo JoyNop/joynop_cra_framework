@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { JoyNopLayout } from "./common";
 import { Spin } from "antd";
 // import { SiderLayout } from "./layout";
-// import { PrivateRoute } from "./utils/privateRoutes";
+import { PrivateRoute } from "./utils/privateRoutes";
+import { AboutDemo } from "./aboutdemo/about.com";
 const UserCom = loadable(() => import("./userdemo/userPage"), {
   fallback: <Spin />
 });
@@ -23,9 +24,26 @@ const App: React.FC = () => {
         <Router>
           <Switch>
             <JoyNopLayout>
-              <Route exact path="/" component={OldApp} />
-              <Route exact path="/user" component={UserCom} />
-              <Route exact path="/todo" component={TodoDemo} />
+              <PrivateRoute isSignIn={true} exact path="/" component={OldApp} />
+              <PrivateRoute
+                isSignIn={true}
+                exact
+                path="/user"
+                component={UserCom}
+              />
+              <PrivateRoute
+                isSignIn={true}
+                exact
+                path="/todo"
+                component={TodoDemo}
+              />
+              <PrivateRoute
+                isSignIn={false}
+                exact
+                path="/about"
+                component={AboutDemo}
+              />
+
               {/*  <SiderLayout {...this.props}>
               <PrivateRoute isSignIn={false} exact path='/' component={Home} />
               <PrivateRoute isSignIn={true} exact path='/feedback' component={FeedBack} />

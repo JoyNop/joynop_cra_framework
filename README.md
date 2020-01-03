@@ -1,7 +1,7 @@
 # JoyNop React Framework
  
 
-*[JoyNop React Framework Document](https://github.com/JoyNop/joynop_cra_framework/wiki)*
+*[JoyNop React Framework Document](https://www.yuque.com/joynop/joynop-cra-framework)*
 
 *[JoyNop React Framework Release](https://github.com/JoyNop/joynop_cra_framework/releases/latest)*
 
