@@ -53,6 +53,7 @@ const App: React.FC = () => {
               <PrivateRoute isSignIn={false} exact path='/' component={Home} />
               <PrivateRoute isSignIn={true} exact path='/feedback' component={FeedBack} />
             </SiderLayout> */}
+
               <Route component={ResultPage404} />
             </JoyNopLayout>
           </Switch>
