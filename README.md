@@ -18,7 +18,7 @@
 
 - Please don't use `eject` easily, it is irreversible and can provide you with the latest `react-scripts`
 
-
+** 如无法正常启动 请在`.env`中添加`SKIP_PREFLIGHT_CHECK=true`
 
 ------
 
