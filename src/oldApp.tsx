@@ -1,11 +1,12 @@
 import React from "react";
 import * as Style from "./a.module.less";
 import { LiveApp } from "./livedemo/live.app";
-import { Button, List, Card } from "antd";
+import { Button, List, Card, Input } from "antd";
 import { TabApp } from "./tabdemo/tab";
 import { chunk } from "lodash";
 import axios from "./utils/http";
 import { Link } from "react-router-dom";
+const { Search } = Input;
 export class OldApp extends React.Component {
   postList: Array<any> = [];
   render() {
@@ -18,6 +19,13 @@ export class OldApp extends React.Component {
     let aaa = chunk(bbb, 6);
     return (
       <div className={Style.Page}>
+        <Search
+          placeholder="input search text"
+          enterButton="get api"
+          size="large"
+          defaultValue="/api/"
+          onSearch={(e: any) => this.handelSearch(e)}
+        />
         <Button>
           <Link to="/user">user</Link>
         </Button>
@@ -64,12 +72,24 @@ export class OldApp extends React.Component {
     );
   }
 
+  handelSearch = async (e: string) => {
+    console.log(1);
+    console.log(e);
+    try {
+      const res = await axios.get(e);
+      console.log(res);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
   errorPost = async () => {
     try {
-      const res = await axios.post("http://666.com/posts");
+      const res = await axios.get("/todos");
       this.postList = res.data;
       this.setState({});
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.response);
+    }
   };
   init = async () => {
     try {
@@ -80,6 +100,8 @@ export class OldApp extends React.Component {
   };
   componentDidMount() {
     this.init();
+    let _window: any = window;
+    console.log(_window.REACT_APP_ENVIRONMENT);
     console.log(process.env.REACT_APP_NOT_SECRET_CODE);
   }
 }

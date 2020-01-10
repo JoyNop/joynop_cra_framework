@@ -1,0 +1,3 @@
+ 
+window.REACT_APP_ENVIRONMENT = 'DEV'
+window.REACT_APP_NAVBAR_COLOR = 'LightGreen'
