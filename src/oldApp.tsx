@@ -1,7 +1,7 @@
 import React from "react";
 import * as Style from "./a.module.less";
 import { LiveApp } from "./livedemo/live.app";
-import { Button, List, Card, Input } from "antd";
+import { Button, List, Card, Input, message } from "antd";
 import { TabApp } from "./tabdemo/tab";
 import { chunk } from "lodash";
 import axios from "./utils/http";
@@ -35,6 +35,7 @@ export class OldApp extends React.Component {
         <Button>
           <Link to="/todo">todo</Link>
         </Button>
+        <Button onClick={this.setCookie_B}>set cookie</Button>
         <div className={`${Style.Hello}${Style.Item}`}>Less 检测</div>
         <button onClick={openMenu}>Debugger测试</button>
         <Button type="primary">But9999ton</Button>
@@ -71,6 +72,37 @@ export class OldApp extends React.Component {
       </div>
     );
   }
+  setCookie_B = () => {
+    try {
+      let key: string = "Key" + Math.random();
+      let value: string = "value" + Math.random();
+
+      this.setCookie(key, value);
+      message.success("成功");
+      message.info(this.getCookie(key));
+    } catch (error) {
+      message.error(error);
+    }
+  };
+
+  getCookie(key: any) {
+    const name = key + "=";
+    const ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      const c = ca[i].trim();
+      if (c.indexOf(name) === 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  // 设置cookie,默认是30天
+  setCookie(key: any, value: any) {
+    const d = new Date();
+    d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = key + "=" + value + "; " + expires;
+  }
 
   handelSearch = async (e: string) => {
     console.log(1);
@@ -93,7 +125,7 @@ export class OldApp extends React.Component {
   };
   init = async () => {
     try {
-      const res = await axios.get("http://jsonplaceholder.typicode.com/posts");
+      const res = await axios.get("https://sm.ms/api/v2/history");
       this.postList = res.data;
       this.setState({});
     } catch (error) {}
