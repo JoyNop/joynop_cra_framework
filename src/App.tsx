@@ -1,27 +1,27 @@
-import React from "react";
-import "./App.css";
-import { OldApp } from "./oldApp";
-import loadable from "@loadable/component";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { JoyNopLayout } from "./common";
-import { Spin } from "antd";
+import React from 'react';
+import './App.css';
+
+import loadable from '@loadable/component';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { JoyNopLayout } from './common';
+import { Spin } from 'antd';
 // import { SiderLayout } from "./layout";
-import { PrivateRoute } from "./utils/privateRoutes";
-import { AboutDemo } from "./aboutdemo/about.com";
+import { PrivateRoute } from './utils/privateRoutes';
+import { AboutDemo } from './aboutdemo/about.com';
 
-const ResultPage404 = loadable(() => import("./common/resultPage/result"), {
-  fallback: <Spin />
+const ResultPage404 = loadable(() => import('./common/resultPage/result'), {
+  fallback: <Spin />,
 });
 
-const UserCom = loadable(() => import("./userdemo/userPage"), {
-  fallback: <Spin />
+const UserCom = loadable(() => import('./userdemo/userPage'), {
+  fallback: <Spin />,
 });
-const TodoDemo = loadable(() => import("./todolist/todoPage"), {
-  fallback: <Spin />
+const TodoDemo = loadable(() => import('./todolist/todoPage'), {
+  fallback: <Spin />,
 });
 
 const App: React.FC = () => {
-  console.log("ENV:", process.env.REACT_APP_ENV);
+  console.log('ENV:', process.env.REACT_APP_ENV);
 
   return (
     <div>
@@ -29,7 +29,18 @@ const App: React.FC = () => {
         <Router>
           <Switch>
             <JoyNopLayout>
-              <PrivateRoute isSignIn={true} exact path="/" component={OldApp} />
+              <PrivateRoute
+                isSignIn={true}
+                exact
+                path="/"
+                component={() => (
+                  <div>
+                    <Link to="/user">user/</Link>
+                    <Link to="/todo">todo/</Link>
+                    <Link to="/about">about/</Link>
+                  </div>
+                )}
+              />
               <PrivateRoute
                 isSignIn={true}
                 exact
