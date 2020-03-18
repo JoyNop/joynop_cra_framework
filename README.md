@@ -64,6 +64,18 @@
 </details>
 
 
+```bash
+docker build -t testnginx .
+```
+
+```bash
+docker run --name testnginx -d -p 10086:80 testnginx
+```
+## 特性
+
+1. 访问重定向，详情见`rewrite/app.rewrite.conf`
+2. 默认增加对VUE-ROUTER/REACT ROUTER 中`browserhistory`的支持
+3. 快速适应后端API更迭版本，无需修改前端app代码，无需环境变量
 
 
 
