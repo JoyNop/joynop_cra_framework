@@ -65,17 +65,26 @@
 
 
 ```bash
-docker build -t testnginx .
+docker build -t joynoptest .
 ```
 
 ```bash
-docker run --name testnginx -d -p 10086:80 testnginx
+docker run --name joynoptest -d -p 10086:80 joynoptest
 ```
+
+
+通过https访问
+
+```bash
+docker run --name joynoptest -it -p 10088:80  -p 443:443 joynoptest
+```
+
 ## 特性
 
 1. 访问重定向，详情见`rewrite/app.rewrite.conf`
 2. 默认增加对VUE-ROUTER/REACT ROUTER 中`browserhistory`的支持
 3. 快速适应后端API更迭版本，无需修改前端app代码，无需环境变量
+4. 此处存放基于nginx的crt(pem)和key文件
 
 
 
