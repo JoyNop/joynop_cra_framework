@@ -1,58 +1,97 @@
 ```
-E:.
-│  a.module.less        //测试LESS 
-│  App.css              //测试CSS
-│  App.tsx              //APP入口以及router
-│  index.css            //reset css
-│  index.tsx            //入口以及REDUX 
-│  oldApp.tsx           //首页入口
-│  react-app-env.d.ts   //declare module 
-│  serviceWorker.ts     //serviceWorker
+│  .dockerignore
+│  .editorconfig
+│  .env
+│  .gitignore
+│  .prettierrc
+│  config-overrides.js
+│  Dockerfile
+│  LICENSE
+│  package.json
+│  README.md
+│  tsconfig.json
+│  yarn.lock
 │  
-├─common
-│  │  index.ts          // 公共组建export  
-│  │  
-│  └─layout
-│          layout.module.less       
-│          layout.tsx
-│          
-├─livedemo
-│      live.app.tsx       //livedata-demo
-│      live.module.less
-│      live.service.tsx  //livedata-service 
+├─.vscode
+│      launch.json
+│      settings.json
 │      
-├─postdemo
-│      post.tsx           //console.log看获取数据
+├─configbak
+│      config-overrides copy.js
+│      package copy.json
 │      
-├─store
-│  │  index.ts          //导出Reducer
+├─docs
+│  │  tree.md
 │  │  
-│  ├─actions
-│  │      index.ts      //导出action,在业务文件夹下写，然后此处export
-│  │      
-│  ├─reducers
-│  │      index.tsx    //导出reducers,在业务文件夹下写，然后此处export
-│  │      
-│  └─types
-│          index.ts     //部分redux 变量
+│  └─img
+│          20191218155632.jpg
+│          logo.jpg
 │          
-├─tabdemo
-│      tab.tsx
+├─public
+│      config.js
+│      favicon.ico
+│      get_env.sh
+│      index.html
+│      manifest.json
+│      robots.txt
 │      
-├─userdemo
-│  │  userControl.tsx    //组件3
-│  │  userList.tsx       //组件2 
-│  │  userPage.tsx       //组件1
-│  │  
-│  └─service
-│          userAction.ts      //control 执行各种操作
-│          userReducers.ts    //userReducers  初始值，做条件判断
-│          userTypes.ts      //userReducers    //判断操作类型
-│          
-└─utils
-        http.ts              //封装axios 
-        livecom.ts           //封装livedata
-        
-
-
+├─server
+│  └─config
+│      │  default.conf
+│      │  http.conf
+│      │  https.conf
+│      │  mime.types
+│      │  
+│      ├─cert
+│      │      readme.md
+│      │      
+│      ├─logs
+│      │      app.error.log
+│      │      app.log
+│      │      
+│      └─rewrite
+│              app.rewrite.conf
+│              
+└─src
+    │  a.module.less
+    │  App.css
+    │  App.tsx
+    │  index.css
+    │  index.tsx
+    │  oldApp.tsx
+    │  react-app-env.d.ts
+    │  serviceWorker.ts
+    │  setupProxy.js
+    │  
+    ├─biz                            //业务文件夹
+    │  └─todolist                    //业务组件
+    │      │  todoControl.tsx         
+    │      │  todoList.tsx
+    │      │  todoPage.tsx
+    │      │  
+    │      └─service                //某个业务服务，私有属性，尽量避免私有属性复用
+    │              todoAction.ts
+    │              todoReducers.ts
+    │              todoTypes.ts
+    │              
+    ├─router
+    │      todo.router.tsx         //业务路由 以.router命名
+    │      
+    ├─store                         //redux服务
+    │  │  index.ts
+    │  │  
+    │  ├─actions
+    │  │      index.ts
+    │  │      
+    │  ├─reducers
+    │  │      index.tsx
+    │  │      
+    │  └─types
+    │          index.ts
+    │          
+    └─utils                      //工具类
+            handleAuthToken.ts
+            http.ts
+            privateRoutes.tsx
+            
 ```
