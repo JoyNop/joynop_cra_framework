@@ -1,7 +1,7 @@
-import React from "react";
-import TodoList from "./todoList";
-import TodoControl from "./todoControl";
-export default class TodoPage extends React.Component {
+import React from 'react';
+import TodoList from './todoList';
+import TodoControl from './todoControl';
+export class TodoPage extends React.Component {
   render() {
     return (
       <div>

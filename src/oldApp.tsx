@@ -1,8 +1,7 @@
 import React from 'react';
-import * as Style from './a.module.less';
-import { Button, List, Card, Input, message } from 'antd';
+import Style from './a.module.less';
+import { Button, Input, message } from 'antd';
 
-import { chunk } from 'lodash';
 import axios from './utils/http';
 import { Link } from 'react-router-dom';
 const { Search } = Input;
@@ -24,7 +23,7 @@ export class OldApp extends React.Component {
           onSearch={(e: any) => this.handelSearch(e)}
         />
         <Button>
-          <Link to="/todo">todo</Link>
+          <Link to="/todo">todo url</Link>
         </Button>
         <Button onClick={this.setCookie_B}>set cookie</Button>
         <button onClick={openMenu}>Debugger测试</button>
@@ -32,9 +31,21 @@ export class OldApp extends React.Component {
         <Button type="primary" onClick={this.errorPost}>
           错误请求检测 ds
         </Button>
-        {process.env.REACT_APP_NOT_SECRET_CODE}666
+        <table>
+          <tbody>
+            <tr>
+              <td>通过env植入变量</td>
+              <td>{process.env.REACT_APP_TITLE}</td>
+            </tr>
+            <tr>
+              <td>通过BUILD植入变量</td>
+              <td>{process.env.REACT_APP_ENV}</td>
+            </tr>
+          </tbody>
+        </table>
+
         <input value={process.env.REACT_APP_NOT_SECRET_CODE} />
-        <input value={process.env.REACT_APP_HANRUI_1} />
+        <input value={process.env.REACT_APP_WINDOWS_ENV} />
       </div>
     );
   }
@@ -89,16 +100,11 @@ export class OldApp extends React.Component {
       console.log(error.response);
     }
   };
-  init = async () => {
-    try {
-      const res = await axios.get('https://sm.ms/api/v2/history');
-      this.postList = res.data;
-      this.setState({});
-    } catch (error) {}
-  };
+
   componentDidMount() {
-    this.init();
     let _window: any = window;
+    console.log(process.env);
+
     console.log(_window.REACT_APP_ENVIRONMENT);
     console.log(process.env.REACT_APP_NOT_SECRET_CODE);
   }

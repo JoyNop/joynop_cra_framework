@@ -1,8 +1,8 @@
-import { Dispatch } from "redux";
-import axios from "../../utils/http";
-import { ETodoTypes } from "../../store/types";
+import { Dispatch } from 'redux';
+import axios from '../../../utils/http';
+import { ETodoTypes } from '../../../store/types';
 
-import { IInitialState } from "../../store/types";
+import { IInitialState } from '../../../store/types';
 
 export const getTodoList = () => async (dispatch: Dispatch<IInitialState>) => {
   dispatch({ type: ETodoTypes.TODO_FETCH_LOADING });
@@ -34,7 +34,7 @@ export const addItem = (todos: Array<any>) => (
       userId: Math.random(),
       id: Math.random(),
       title: `Title:${Math.random()}`,
-      completed: false
+      completed: false,
     };
     todos.unshift(item);
     dispatch({ type: ETodoTypes.TODO_ADD_ITEM, payload: todos });

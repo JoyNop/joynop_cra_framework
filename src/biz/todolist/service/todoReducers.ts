@@ -1,4 +1,4 @@
-import { ETodoTypes, IInitialState } from "../../store/types";
+import { ETodoTypes, IInitialState } from '../../../store/types';
 interface ITodo {
   userId: number;
   id: number;
@@ -13,7 +13,7 @@ interface INITSTATE {
 
 const initialState: INITSTATE = {
   isLoading: true,
-  todolist: []
+  todolist: [],
 };
 
 export const todoReducer = (state = initialState, action: IInitialState) => {
@@ -21,37 +21,37 @@ export const todoReducer = (state = initialState, action: IInitialState) => {
     case ETodoTypes.TODO_FETCH_LOADING:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case ETodoTypes.TODO_FETCH_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        todolist: action.payload as Array<ITodo>
+        todolist: action.payload as Array<ITodo>,
       };
     case ETodoTypes.TODO_FETCH_REFUSH:
       return {
         ...state,
         isLoading: false,
-        todolist: action.payload as Array<ITodo>
+        todolist: action.payload as Array<ITodo>,
       };
     case ETodoTypes.TODO_FETCH_ERROR:
       return {
         ...state,
         isLoading: false,
-        todolist: action.payload as Array<ITodo>
+        todolist: action.payload as Array<ITodo>,
       };
     case ETodoTypes.TODO_ADD_ITEM:
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
         // todolist: action.payload as Array<ITodo>
       };
     case ETodoTypes.TODO_REMOVE_ITEM:
       return {
         ...state,
         isLoading: false,
-        todolist: action.payload as Array<ITodo>
+        todolist: action.payload as Array<ITodo>,
       };
     default:
       return state;

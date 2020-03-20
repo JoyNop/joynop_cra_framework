@@ -1,4 +1,4 @@
-export * from '../../todolist/service/todoTypes';
+export * from '../../biz/todolist/service/todoTypes';
 export interface IInitialState {
   type: string;
   payload?: any;

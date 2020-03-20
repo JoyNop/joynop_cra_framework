@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { AppState } from '../store';
+import { AppState } from '../../store';
 import { addItem, refreshTodo } from './service/todoAction';
 import { Button } from 'antd';
 

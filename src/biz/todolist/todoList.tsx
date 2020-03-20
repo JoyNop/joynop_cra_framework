@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { List, Button } from "antd";
-import { getTodoList, removeItem } from "./service/todoAction";
-import { AppState } from "../store";
+import React from 'react';
+import { connect } from 'react-redux';
+import { List, Button } from 'antd';
+import { getTodoList, removeItem } from './service/todoAction';
+import { AppState } from '../../store';
 
 interface ITodoProps {
   state: AppState;
@@ -40,12 +40,12 @@ class TodoList extends React.Component<ITodoProps> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  state
+  state,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   getTodoList: () => dispatch(getTodoList()),
   removeItem: (todos: Array<any>, index: number) =>
-    dispatch(removeItem(todos, index))
+    dispatch(removeItem(todos, index)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

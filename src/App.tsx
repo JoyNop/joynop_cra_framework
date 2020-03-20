@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
-
 import loadable from '@loadable/component';
-import { BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 // import { JoyNopLayout } from './common';
 import { Spin } from 'antd';
 // import { SiderLayout } from "./layout";
 import { PrivateRoute } from './utils/privateRoutes';
+import { OldApp } from './oldApp';
 
-const TodoDemo = loadable(() => import('./todolist/todoPage'), {
+const TODO_ROUTER = loadable(() => import('./router/todo.router'), {
   fallback: <Spin />,
 });
 
@@ -20,30 +20,14 @@ const App: React.FC = () => {
       <React.Fragment>
         <Router>
           <Switch>
-            <PrivateRoute
-              isSignIn={true}
-              exact
-              path="/"
-              component={() => (
-                <div>
-                  <Link to="/user">user/</Link>
-                  <Link to="/todo">todo/</Link>
-                  <Link to="/about">about/</Link>
-                </div>
-              )}
-            />
+            <PrivateRoute permission={true} exact path="/" component={OldApp} />
 
             <PrivateRoute
-              isSignIn={true}
+              permission={true}
               exact
               path="/todo"
-              component={TodoDemo}
+              component={TODO_ROUTER}
             />
-
-            {/*  <SiderLayout {...this.props}>
-              <PrivateRoute isSignIn={false} exact path='/' component={Home} />
-              <PrivateRoute isSignIn={true} exact path='/feedback' component={FeedBack} />
-            </SiderLayout> */}
           </Switch>
         </Router>
       </React.Fragment>

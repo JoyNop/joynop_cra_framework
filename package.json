@@ -1,6 +1,6 @@
 {
   "name": "joynop-cra-framework",
-  "version": "0.3.1",
+  "version": "2.0.0",
   "description": "out of the box react template",
   "repository": "https://github.com/JoyNop/joynop_cra_framework.git",
   "author": {
@@ -21,7 +21,7 @@
     "antd": "^4.0.3",
     "axios": "^0.19.2",
     "babel-plugin-import": "^1.12.2",
-    "customize-cra": "^0.9.1",
+    "customize-cra": "^1.0.0-alpha.0",
     "http-proxy-middleware": "^1.0.3",
     "less": "^3.11.1",
     "lodash": "^4.17.15",
@@ -48,7 +48,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "build:a": "cross-env REACT_APP_ENV=HANRUI_ENV react-app-rewired build",
+    "build:env": "cross-env REACT_APP_ENV=JOYNOP_BUILD_ENV react-app-rewired build",
     "analyze": "react-app-rewired build --analyze",
     "eject": "react-scripts eject"
   },

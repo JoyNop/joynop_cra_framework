@@ -4281,10 +4281,10 @@ csstype@^2.2.0:
   resolved "https://registry.npm.taobao.org/csstype/download/csstype-2.6.8.tgz#0fb6fc2417ffd2816a418c9336da74d7f07db431"
   integrity sha1-D7b8JBf/0oFqQYyTNtp01/B9tDE=
 
-customize-cra@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.npm.taobao.org/customize-cra/download/customize-cra-0.9.1.tgz#76b42c4f537c16329eccc09cfefd804d04c81550"
-  integrity sha1-drQsT1N8FjKezMCc/v2ATQTIFVA=
+customize-cra@^1.0.0-alpha.0:
+  version "1.0.0-alpha.0"
+  resolved "https://registry.npm.taobao.org/customize-cra/download/customize-cra-1.0.0-alpha.0.tgz#7a9523a93d0720cd2190dc24137691b981abf185"
+  integrity sha1-epUjqT0HIM0hkNwkE3aRuYGr8YU=
   dependencies:
     lodash.flow "^3.5.0"
 
