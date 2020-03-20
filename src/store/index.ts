@@ -1,13 +1,12 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunkMiddleware from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { userReducer, todoReducer } from "./reducers";
+import { todoReducer } from './reducers';
 // import { chatReducer } from "./chat/reducers";
 
 const rootReducer = combineReducers({
-  user: userReducer,
-  todo: todoReducer
+  todo: todoReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

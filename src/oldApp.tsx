@@ -1,11 +1,10 @@
-import React from "react";
-import * as Style from "./a.module.less";
-import { LiveApp } from "./livedemo/live.app";
-import { Button, List, Card, Input, message } from "antd";
-import { TabApp } from "./tabdemo/tab";
-import { chunk } from "lodash";
-import axios from "./utils/http";
-import { Link } from "react-router-dom";
+import React from 'react';
+import * as Style from './a.module.less';
+import { Button, List, Card, Input, message } from 'antd';
+
+import { chunk } from 'lodash';
+import axios from './utils/http';
+import { Link } from 'react-router-dom';
 const { Search } = Input;
 export class OldApp extends React.Component {
   postList: Array<any> = [];
@@ -15,8 +14,6 @@ export class OldApp extends React.Component {
       console.log(1);
     };
 
-    let bbb = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    let aaa = chunk(bbb, 6);
     return (
       <div className={Style.Page}>
         <Search
@@ -27,58 +24,27 @@ export class OldApp extends React.Component {
           onSearch={(e: any) => this.handelSearch(e)}
         />
         <Button>
-          <Link to="/user">user</Link>
-        </Button>
-        <Button>
-          <Link to="/usdddddder">error Link</Link>
-        </Button>
-        <Button>
           <Link to="/todo">todo</Link>
         </Button>
         <Button onClick={this.setCookie_B}>set cookie</Button>
-        <div className={`${Style.Hello}${Style.Item}`}>Less 检测</div>
         <button onClick={openMenu}>Debugger测试</button>
         <Button type="primary">But9999ton</Button>
         <Button type="primary" onClick={this.errorPost}>
-          错误请求检测
+          错误请求检测 ds
         </Button>
-        <div className={Style.Item}>
-          LiveData Test 6 <LiveApp />
-        </div>
-        <div className={Style.Item}>
-          Tab <TabApp />{" "}
-        </div>
-        66{process.env.REACT_APP_NOT_SECRET_CODE}666
+        {process.env.REACT_APP_NOT_SECRET_CODE}666
         <input value={process.env.REACT_APP_NOT_SECRET_CODE} />
         <input value={process.env.REACT_APP_HANRUI_1} />
-        {aaa.map(index => index)}
-        <List
-          grid={{
-            gutter: 16,
-            xs: 1,
-            sm: 2,
-            md: 4,
-            lg: 4,
-            xl: 6,
-            xxl: 3
-          }}
-          dataSource={this.postList}
-          renderItem={item => (
-            <List.Item>
-              <Card title={item.title}>{item.body}</Card>
-            </List.Item>
-          )}
-        />
       </div>
     );
   }
   setCookie_B = () => {
     try {
-      let key: string = "Key" + Math.random();
-      let value: string = "value" + Math.random();
+      let key: string = 'Key' + Math.random();
+      let value: string = 'value' + Math.random();
 
       this.setCookie(key, value);
-      message.success("成功");
+      message.success('成功');
       message.info(this.getCookie(key));
     } catch (error) {
       message.error(error);
@@ -86,22 +52,22 @@ export class OldApp extends React.Component {
   };
 
   getCookie(key: any) {
-    const name = key + "=";
-    const ca = document.cookie.split(";");
+    const name = key + '=';
+    const ca = document.cookie.split(';');
     for (let i = 0; i < ca.length; i++) {
       const c = ca[i].trim();
       if (c.indexOf(name) === 0) {
         return c.substring(name.length, c.length);
       }
     }
-    return "";
+    return '';
   }
   // 设置cookie,默认是30天
   setCookie(key: any, value: any) {
     const d = new Date();
     d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
-    const expires = "expires=" + d.toUTCString();
-    document.cookie = key + "=" + value + "; " + expires;
+    const expires = 'expires=' + d.toUTCString();
+    document.cookie = key + '=' + value + '; ' + expires;
   }
 
   handelSearch = async (e: string) => {
@@ -116,7 +82,7 @@ export class OldApp extends React.Component {
   };
   errorPost = async () => {
     try {
-      const res = await axios.get("/todos");
+      const res = await axios.get('/todos');
       this.postList = res.data;
       this.setState({});
     } catch (error) {
@@ -125,7 +91,7 @@ export class OldApp extends React.Component {
   };
   init = async () => {
     try {
-      const res = await axios.get("https://sm.ms/api/v2/history");
+      const res = await axios.get('https://sm.ms/api/v2/history');
       this.postList = res.data;
       this.setState({});
     } catch (error) {}

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { AppState } from "../store";
-import { addItem, refreshTodo } from "./service/todoAction";
-import { Button } from "antd";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { AppState } from '../store';
+import { addItem, refreshTodo } from './service/todoAction';
+import { Button } from 'antd';
 
 interface ITodoControlProps {
   state: AppState;
@@ -22,11 +22,11 @@ class TodoControl extends Component<ITodoControlProps> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  state
+  state,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   addItem: (todos: Array<any>) => dispatch(addItem(todos)),
-  refreshTodo: () => dispatch(refreshTodo())
+  refreshTodo: () => dispatch(refreshTodo()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(TodoControl);
