@@ -29,7 +29,7 @@ export class OldApp extends React.Component {
         <button onClick={openMenu}>Debugger测试</button>
         <Button type="primary">But9999ton</Button>
         <Button type="primary" onClick={this.errorPost}>
-          错误请求检测 ds
+          错误请求检测
         </Button>
         <table>
           <tbody>
@@ -43,9 +43,6 @@ export class OldApp extends React.Component {
             </tr>
           </tbody>
         </table>
-
-        <input value={process.env.REACT_APP_NOT_SECRET_CODE} />
-        <input value={process.env.REACT_APP_WINDOWS_ENV} />
       </div>
     );
   }
