@@ -34,12 +34,22 @@ export class OldApp extends React.Component {
         <table>
           <tbody>
             <tr>
-              <td>通过env植入变量</td>
-              <td>{process.env.REACT_APP_TITLE}</td>
+              <td style={{ border: '1px solid' }}>通过env植入变量</td>
+              <td style={{ border: '1px solid' }}>
+                {process.env.REACT_APP_TITLE}
+              </td>
             </tr>
             <tr>
-              <td>通过BUILD植入变量</td>
-              <td>{process.env.REACT_APP_ENV}</td>
+              <td style={{ border: '1px solid' }}>通过BUILD植入变量</td>
+              <td style={{ border: '1px solid' }}>
+                {process.env.REACT_APP_ENV}
+              </td>
+            </tr>
+            <tr>
+              <td style={{ border: '1px solid' }}>通过系统环境变量录入</td>
+              <td style={{ border: '1px solid' }}>
+                {process.env.REACT_APP_NOT_SECRET_CODE}
+              </td>
             </tr>
           </tbody>
         </table>

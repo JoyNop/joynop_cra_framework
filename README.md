@@ -44,11 +44,9 @@
 
 9. 支持vscode调试，断点，debugger ，F5即可
 
-10. 将`LiveData`兼容至`IE11`
+10. HTTPS 开启
 
-11. HTTPS 开启
-
-12. 增加对Redux的适配
+11. 增加对Redux的适配
 
   支持自定义变量 可通过如下命令进行测试
 <details>
