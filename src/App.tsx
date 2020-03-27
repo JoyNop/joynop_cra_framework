@@ -7,11 +7,16 @@ import { Spin } from 'antd';
 // import { SiderLayout } from "./layout";
 import { PrivateRoute } from './utils/privateRoutes';
 import { OldApp } from './oldApp';
-
+/**
+ * General component description in JSDoc format. Markdown is *supported*.
+ */
 const TODO_ROUTER = loadable(() => import('./router/todo.router'), {
   fallback: <Spin />,
 });
 
+const HOOK_ROUTER = loadable(() => import('./router/hook.router'), {
+  fallback: <Spin />,
+});
 const App: React.FC = () => {
   console.log('ENV:', process.env.REACT_APP_ENV);
 
@@ -27,6 +32,12 @@ const App: React.FC = () => {
               exact
               path="/todo"
               component={TODO_ROUTER}
+            />
+            <PrivateRoute
+              permission={true}
+              exact
+              path="/hook"
+              component={HOOK_ROUTER}
             />
           </Switch>
         </Router>
