@@ -1,4 +1,4 @@
-FROM    nginx:alpine
+FROM    nginx
 LABEL   author="hanrui"
 # LABEL   joynop.io/name=joynop-cra
 COPY    build /root/app

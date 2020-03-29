@@ -7,7 +7,7 @@ import { IInitialState } from '../../../store/types';
 export const getTodoList = () => async (dispatch: Dispatch<IInitialState>) => {
   dispatch({ type: TodoTypes.TODO_FETCH_LOADING });
   try {
-    const res = await axios.get(`http://jsonplaceholder.typicode.com/todos`);
+    const res = await axios.get(`/api/todos`);
     dispatch({ type: TodoTypes.TODO_FETCH_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: TodoTypes.TODO_FETCH_ERROR });
