@@ -2,9 +2,10 @@ import React from 'react';
 import Style from './a.module.less';
 import { Button, Input, message } from 'antd';
 
-import axios from './utils/http';
+import axios from '@/utils/http';
 import { Link } from 'react-router-dom';
 const { Search } = Input;
+
 export class OldApp extends React.Component {
   postList: Array<any> = [];
   render() {
