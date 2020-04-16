@@ -11,7 +11,7 @@ export class OldApp extends React.Component {
   render() {
     const openMenu = () => {
       debugger;
-      console.log(1);
+      console.log(1123);
     };
 
     return (
