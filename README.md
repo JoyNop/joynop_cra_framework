@@ -1,3 +1,6 @@
+<!--
+ * @Author: HanRui
+ -->
 # JoyNop React Framework
  
 
@@ -84,6 +87,3 @@ docker run --name joynoptest -it -p 10088:80  -p 443:443 joynoptest
 3. 快速适应后端API更迭版本，无需修改前端app代码，无需环境变量
 4. 此处存放基于nginx的crt(pem)和key文件
 
-
-
-**支持eject，但不建议eject，通过`customize-cra`扩展`WebPack`,可以保证`react-scripts`的稳定性，不会因某些支持库版本问题影响整个项目，可以顺利升级`react-scripts`**
