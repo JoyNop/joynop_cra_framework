@@ -1,55 +1,86 @@
-import React from 'react';
-import './App.css';
-import loadable from '@loadable/component';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import { JoyNopLayout } from './common';
-import { Spin } from 'antd';
-// import { SiderLayout } from "./layout";
-import { PrivateRoute } from './utils/privateRoutes';
-import { OldApp } from './oldApp';
+import React from "react";
+import "./App.less";
+import loadable from "@loadable/component";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import pMinDelay from "p-min-delay";
+import { PrivateRoute } from "./utils/privateRoutes";
+import { InitSpin } from "@/common";
+import bizRoutes from "@/config/bizRouter.config"; //业务组件引入
+
+import { AppState } from "./store";
+import { connect } from "react-redux";
+import * as service from "@/store/actions/global.action";
 /**
- * General component description in JSDoc format. Markdown is *supported*.
+ * 参考写法
+ *
+ *  */
+const DEMO_ROUTER = loadable(
+  () => pMinDelay(import("./router/todo.router"), 100), //拥有延迟加载
+  {
+    fallback: <InitSpin />,
+  }
+);
+
+/**
+ * 注册路由`/登录`
  */
-const TODO_ROUTER = loadable(() => import('./router/todo.router'), {
-  fallback: <Spin />,
-});
+// const LOGIN_ROUTER = loadable(() => import("./router/login.router"), {
+//   fallback: <InitSpin />,
+// });
 
-const HOOK_ROUTER = loadable(() => import('./router/hook.router'), {
-  fallback: <Spin />,
-});
+/**
+ * 用户协议
+ */
+// const LICENSE_ROUTER = loadable(() => import("./router/license.router"), {
+//   fallback: <InitSpin />,
+// });
 
-const ERROR_404_ROUTER = loadable(() => import('./router/error404.router'), {
-  fallback: <Spin />,
+/**
+ * 未知页面
+ */
+const ERROR_404_ROUTER = loadable(() => import("./router/error404.router"), {
+  fallback: <InitSpin />,
 });
-const App: React.FC = () => {
-  console.log('ENV:', process.env.REACT_APP_ENV);
-
-  return (
-    <div>
+interface AppProps {
+  state: AppState;
+}
+class App extends React.Component<AppProps> {
+  render() {
+    return (
       <React.Fragment>
         <Router>
           <Switch>
-            <PrivateRoute permission={true} exact path="/" component={OldApp} />
-
-            <PrivateRoute
-              permission={true}
-              exact
-              path="/todo"
-              component={TODO_ROUTER}
-            />
-            <PrivateRoute
-              permission={true}
-              exact
-              path="/hook"
-              component={HOOK_ROUTER}
-            />
+            <Route exact path="/" component={DEMO_ROUTER} />
+            {/* 业务路由 */}
+            {bizRoutes.map((item, index) => (
+              <PrivateRoute
+                key={index}
+                leftMenu={item.leftMenu}
+                permission={item.permission}
+                exact={item.exact}
+                path={item.path}
+                single={item.single}
+                sensitive={false}
+                component={item.com}
+              />
+            ))}
 
             <Route component={ERROR_404_ROUTER} />
           </Switch>
         </Router>
       </React.Fragment>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default App;
+const mapStateToProps = (state: AppState) => ({
+  state,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({});
+export default connect(mapStateToProps, mapDispatchToProps)(App);

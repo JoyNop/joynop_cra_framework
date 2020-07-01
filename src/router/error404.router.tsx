@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import { Result, Button } from 'antd';
+import React, { Component } from "react";
+import { RouteComponentProps } from "react-router-dom";
+import { Result, Button } from "antd";
 
 interface IError404Props extends RouteComponentProps {}
 export default class ERROR404_ROUTER extends Component<IError404Props> {
@@ -10,10 +10,10 @@ export default class ERROR404_ROUTER extends Component<IError404Props> {
         <Result
           status="404"
           title="404"
-          subTitle="Sorry, the page you visited does not exist."
+          subTitle="抱歉，您访问的页面不存在。"
           extra={
             <Button type="primary" onClick={this.handleGoBack}>
-              Back Home
+              返回
             </Button>
           }
         />

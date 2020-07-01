@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { List, Button } from 'antd';
-import { getTodoList, removeItem } from './service/todoAction';
-import { AppState } from '../../store';
+import React from "react";
+import { connect } from "react-redux";
+import { List, Button } from "antd";
+import { getTodoList, removeItem } from "./service/todoAction";
+import { AppState } from "../../store";
 
 interface ITodoProps {
   state: AppState;
@@ -12,8 +12,6 @@ interface ITodoProps {
 
 class TodoList extends React.Component<ITodoProps> {
   render() {
-    console.log(this.props);
-
     const { state, removeItem } = this.props;
     return (
       <div>

@@ -7,11 +7,19 @@ import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
 import { Provider } from "react-redux";
 import { configureStore } from "./store";
+import zhCN from "antd/es/locale/zh_CN";
+import { ConfigProvider } from "antd";
+import moment from "moment";
+import "moment/locale/zh-cn";
 
 const store = configureStore();
+
+moment.locale("zh-cn");
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConfigProvider locale={zhCN}>
+      <App />
+    </ConfigProvider>
   </Provider>,
   document.getElementById("root")
 );

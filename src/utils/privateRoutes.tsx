@@ -1,30 +1,41 @@
-import { Route, Redirect, RouteProps } from 'react-router-dom';
-import * as React from 'react';
-// import { JoyNopLayout } from '../common';
-// import { checkAuthToken } from './handleAuthToken';
-
+import { Route, Redirect, RouteProps } from "react-router-dom";
+import * as React from "react";
+// import PMSLayout from "../common/layout/pmsLayout.com";
+import { checkAuthlocalStorage, clearLocalStorage } from "./handleAuth";
 export interface PrivateRouteProps extends RouteProps {
   component: React.ComponentType<any>;
   permission: boolean;
+  single?: boolean;
+  leftMenu: boolean;
   isIndex?: boolean;
 }
 
 export const PrivateRoute = (props: PrivateRouteProps) => {
-  let { component: Component, permission: logined, ...rest } = props;
+  const {
+    component: Component,
+    permission: Permission,
+    single: Single,
+    leftMenu: LeftMenu,
+    ...rest
+  } = props;
 
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        logined ? (
-          // && checkAuthToken()
-          // <JoyNopLayout {...props}>
-          <Component {...props} />
-        ) : (
-          // </JoyNopLayout>
-          <Redirect to="/login" />
-        )
-      }
-    />
-  );
+  if (Permission && checkAuthlocalStorage()) {
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          Single ? (
+            <Component {...props} />
+          ) : (
+            // <PMSLayout {...props} leftMenu={LeftMenu}>
+            <Component {...props} />
+            // </PMSLayout>
+          )
+        }
+      />
+    );
+  } else {
+    clearLocalStorage(true);
+    return <Redirect to="/login" />;
+  }
 };

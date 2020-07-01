@@ -22,5 +22,5 @@
   "include": [
     "src"
   ],
-   "extends": "./paths.json"
+  "extends": "./paths.json"
 }

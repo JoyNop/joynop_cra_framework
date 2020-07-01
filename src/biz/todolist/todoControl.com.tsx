@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { AppState } from '../../store';
-import { addItem, refreshTodo } from './service/todoAction';
-import { Button } from 'antd';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { AppState } from "../../store";
+import { addItem, refreshTodo } from "./service/todoAction";
+import { Button } from "antd";
 
 interface ITodoControlProps {
   state: AppState;
