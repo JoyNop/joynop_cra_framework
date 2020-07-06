@@ -8,7 +8,7 @@
 
 *[JoyNop React Framework Release](https://github.com/JoyNop/joynop_cra_framework/releases/latest)*
 
-*** If you want to try more customization, please switch to professional👇 ***
+***If you want to try more customization, please switch to professional👇***
 
 ***👉[JoyNop React Framework Release](https://github.com/JoyNop/joynop_cra_framework/tree/pro)***
 
