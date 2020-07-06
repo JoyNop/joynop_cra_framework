@@ -10,7 +10,7 @@
 
 ***If you want to try more customization, please switch to professional👇***
 
-***👉[JoyNop React Framework Release](https://github.com/JoyNop/joynop_cra_framework/tree/pro)***
+***👉[JoyNop React Framework[PRO✨]](https://github.com/JoyNop/joynop_cra_framework/tree/pro)***
 
 - TypeScript & Antd & Less
 
