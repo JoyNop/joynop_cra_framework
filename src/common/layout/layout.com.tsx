@@ -20,7 +20,7 @@ interface LayoutProps extends RouteComponentProps {
  * @class Layout
  * @extends {React.Component<LayoutProps>}
  */
-export class PMSLayout extends React.Component<LayoutProps> {
+export class JOYNOPLayout extends React.Component<LayoutProps> {
   public state = {
     collapsed: true,
   };
@@ -104,5 +104,5 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({});
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(PMSLayout)
+  connect(mapStateToProps, mapDispatchToProps)(JOYNOPLayout)
 );

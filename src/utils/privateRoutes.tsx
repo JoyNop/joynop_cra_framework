@@ -1,7 +1,7 @@
 import { Route, Redirect, RouteProps } from "react-router-dom";
 import * as React from "react";
-import PMSLayout from "../common/layout/layout.com";
-import { checkAuthlocalStorage, clearLocalStorage } from "./handleAuth";
+import Layout from "../common/layout/layout.com";
+// import { checkAuthlocalStorage, clearLocalStorage } from "./handleAuth";
 export interface PrivateRouteProps extends RouteProps {
   component: React.ComponentType<any>;
   permission: boolean;
@@ -19,7 +19,7 @@ export const PrivateRoute = (props: PrivateRouteProps) => {
     ...rest
   } = props;
 
-  if (Permission && checkAuthlocalStorage()) {
+  if (Permission) {
     return (
       <Route
         {...rest}
@@ -27,15 +27,14 @@ export const PrivateRoute = (props: PrivateRouteProps) => {
           Single ? (
             <Component {...props} />
           ) : (
-            <PMSLayout {...props} leftMenu={LeftMenu}>
+            <Layout {...props} leftMenu={LeftMenu}>
               <Component {...props} />
-            </PMSLayout>
+            </Layout>
           )
         }
       />
     );
   } else {
-    clearLocalStorage(true);
     return <Redirect to="/login" />;
   }
 };

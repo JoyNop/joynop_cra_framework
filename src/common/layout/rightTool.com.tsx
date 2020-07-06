@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { Menu, Dropdown } from "antd";
-import { loginOutForced } from "@/utils/handleAuth";
+// import { loginOutForced } from "@/utils/handleAuth";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { AppState } from "@/store";
@@ -22,12 +22,7 @@ class RightTool extends Component<RightToolProps> {
         </Menu.Item>
 
         <Menu.Divider />
-        <Menu.Item
-          key="111"
-          onClick={() => {
-            loginOutForced(false);
-          }}
-        >
+        <Menu.Item key="111" onClick={() => {}}>
           <UserOutlined />
           退出
         </Menu.Item>
