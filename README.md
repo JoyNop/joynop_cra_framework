@@ -8,6 +8,9 @@
 
 *[JoyNop React Framework Release](https://github.com/JoyNop/joynop_cra_framework/releases/latest)*
 
+*** If you want to try more customization, please switch to professional ***
+***👉[JoyNop React Framework Release](https://github.com/JoyNop/joynop_cra_framework/tree/pro)***
+
 - TypeScript & Antd & Less
 
 1. `yarn add`  Install your dependencies
