@@ -104,13 +104,15 @@ checkBrowsers(paths.appPath, isInteractive)
         buildFolder,
         useYarn
       );
-      console.log(`
-      ${chalk.green(`
-      If you encounter problems
-      Please contact us by email :)
-      `)}
-      ${chalk.blue(`MAIL@HR.IM`)}
-      `);
+      console.log(
+        '\n' + chalk.green(`If you encounter problems\nPlease contact us by email : ${chalk.blue(`MAIL@HR.IM`)}`));
+
+      console.log(
+        '\n如果你使用了' +
+        chalk.underline(chalk.yellow('npm run build:prod')) +
+        ' 请将打包后代码递交给CDN/OSS管理员进行发布和更新'
+      );
+
       console.log()
     },
     err => {

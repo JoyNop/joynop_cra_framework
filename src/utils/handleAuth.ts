@@ -22,11 +22,12 @@ export const clearLocalStorage = (redirect: boolean) => {
   localStorage.removeItem("DBHD_PMS_LOGIN_STATUS"); //移除本地验证
   localStorage.removeItem("DBHD_PMS_ORGID"); //移除本地OrgID
   clearState();
+
   if (redirect) {
-    localStorage.setItem(
-      "DBHD_PMS_LOGIN_REDIRECT",
-      `${window.location.pathname}?from=login`
-    );
+    let url = window.location.href;
+    let origin = window.location.origin;
+    url = url.replace(origin, "");
+    localStorage.setItem("DBHD_PMS_LOGIN_REDIRECT", `${url}`);
   } else {
     localStorage.removeItem("DBHD_PMS_LOGIN_REDIRECT");
   }

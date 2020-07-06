@@ -7,11 +7,11 @@
  * @FilePath: \PrideBrowser\src\setupProxy.js
  */
 const { createProxyMiddleware } = require("http-proxy-middleware");
-module.exports = function(app) {
+module.exports = function (app) {
   app.use(
     "/development",
     createProxyMiddleware({
-      target: "https://pms.duobangbox.com",
+      target: "https://jsonplaceholder.typicode.com/",
       changeOrigin: true,
       pathRewrite: {
         "^/development": "/",

@@ -1,12 +1,12 @@
 import { Route, Redirect, RouteProps } from "react-router-dom";
 import * as React from "react";
-// import PMSLayout from "../common/layout/pmsLayout.com";
+import PMSLayout from "../common/layout/layout.com";
 import { checkAuthlocalStorage, clearLocalStorage } from "./handleAuth";
 export interface PrivateRouteProps extends RouteProps {
   component: React.ComponentType<any>;
   permission: boolean;
-  single?: boolean;
-  leftMenu: boolean;
+  singlePage?: boolean;
+  hasMenu: boolean;
   isIndex?: boolean;
 }
 
@@ -14,8 +14,8 @@ export const PrivateRoute = (props: PrivateRouteProps) => {
   const {
     component: Component,
     permission: Permission,
-    single: Single,
-    leftMenu: LeftMenu,
+    singlePage: Single,
+    hasMenu: LeftMenu,
     ...rest
   } = props;
 
@@ -23,13 +23,13 @@ export const PrivateRoute = (props: PrivateRouteProps) => {
     return (
       <Route
         {...rest}
-        render={props =>
+        render={(props) =>
           Single ? (
             <Component {...props} />
           ) : (
-            // <PMSLayout {...props} leftMenu={LeftMenu}>
-            <Component {...props} />
-            // </PMSLayout>
+            <PMSLayout {...props} leftMenu={LeftMenu}>
+              <Component {...props} />
+            </PMSLayout>
           )
         }
       />

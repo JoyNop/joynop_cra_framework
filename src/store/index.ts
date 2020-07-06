@@ -8,7 +8,6 @@ import { todoReducer, globalReducer } from "./reducers";
 
 const rootReducer = combineReducers({
   todo: todoReducer,
-  // setting: SettingReducer,
   global: globalReducer,
 });
 

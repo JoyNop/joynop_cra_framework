@@ -1,14 +1,12 @@
 import axios from "axios";
 import { message } from "antd";
 import { loginOutForced } from "./handleAuth";
+import { getApiEnv } from "./handleEnvironment";
 // import { getApiEnv } from "./handleEnvironment";
 
 // let url = getApiEnv();
 // console.log(process.env);
-let url = process.env.REACT_APP_BUILD_ENV;
-if (url !== "production") {
-  url = "development";
-}
+let url = getApiEnv();
 
 axios.defaults.baseURL = "/" + url;
 
@@ -16,11 +14,11 @@ axios.defaults.withCredentials = true;
 
 // 请求拦截
 axios.interceptors.request.use(
-  config => {
+  (config) => {
     // 加载
     return config;
   },
-  error => {
+  (error) => {
     console.log("reqError==>", error);
 
     message.error(error.toString());
@@ -30,14 +28,16 @@ axios.interceptors.request.use(
 
 // 响应拦截
 axios.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     // 错误提醒
     if (error.response.status === 401) {
       // 强制退出
-      loginOutForced(true);
+      message.error("未登录，即将为您跳转至登录页面", 3, () =>
+        loginOutForced(true)
+      );
     }
 
     try {
