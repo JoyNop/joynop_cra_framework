@@ -16,21 +16,21 @@ require('../config/env');
 
 
 const path = require('path');
-const chalk = require('react-dev-utils/chalk');
 const fs = require('fs-extra');
 const webpack = require('webpack');
-const configFactory = require('../config/webpack.config');
+const chalk = require('react-ssr-dev-utils/chalk');
+const checkRequiredFiles = require('react-ssr-dev-utils/checkRequiredFiles');
+const FileSizeReporter = require('react-ssr-dev-utils/FileSizeReporter');
+const formatWebpackMessages = require('react-ssr-dev-utils/formatWebpackMessages');
+const printBuildError = require('react-ssr-dev-utils/printBuildError');
+const printHostingInstructions = require('react-ssr-dev-utils/printHostingInstructions');
+
 const paths = require('../config/paths');
-const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
-const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
-const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
-const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
-const printBuildError = require('react-dev-utils/printBuildError');
+const configFactory = require('../config/webpack');
 
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
 const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
-const useYarn = fs.existsSync(paths.yarnLockFile);
 
 // These sizes are pretty large. We'll warn for bundles exceeding them.
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
@@ -39,21 +39,27 @@ const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 const isInteractive = process.stdout.isTTY;
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (
+  !checkRequiredFiles([
+    paths.appHtml,
+    paths.appClientIndexJs,
+    paths.appServerIndexJs,
+  ])
+) {
   process.exit(1);
 }
 
 // Generate configuration
-const config = configFactory('production');
+const [clientConfig, serverConfig] = configFactory('production');
 
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.
-const { checkBrowsers } = require('react-dev-utils/browsersHelper');
+const { checkBrowsers } = require('react-ssr-dev-utils/browsersHelper');
 checkBrowsers(paths.appPath, isInteractive)
   .then(() => {
-    // First, read the current file sizes in build directory.
+    // First, read the current file sizes in client build directory.
     // This lets us display how much they changed later.
-    return measureFileSizesBeforeBuild(paths.appBuild);
+    return measureFileSizesBeforeBuild(paths.appBuildPublic);
   })
   .then(previousFileSizes => {
     // Remove all content but keep the directory so that
@@ -71,13 +77,13 @@ checkBrowsers(paths.appPath, isInteractive)
         console.log(warnings.join('\n\n'));
         console.log(
           '\nSearch for the ' +
-          chalk.underline(chalk.yellow('keywords')) +
-          ' to learn more about each warning.'
+            chalk.underline(chalk.yellow('keywords')) +
+            ' to learn more about each warning.'
         );
         console.log(
           'To ignore, add ' +
-          chalk.cyan('// eslint-disable-next-line') +
-          ' to the line before.\n'
+            chalk.cyan('// eslint-disable-next-line') +
+            ' to the line before.\n'
         );
       } else {
         console.log(chalk.green('Compiled successfully.\n'));
@@ -87,48 +93,20 @@ checkBrowsers(paths.appPath, isInteractive)
       printFileSizesAfterBuild(
         stats,
         previousFileSizes,
-        paths.appBuild,
+        paths.appBuildPublic,
         WARN_AFTER_BUNDLE_GZIP_SIZE,
         WARN_AFTER_CHUNK_GZIP_SIZE
       );
       console.log();
 
-      const appPackage = require(paths.appPackageJson);
-      const publicUrl = paths.publicUrlOrPath;
-      const publicPath = config.output.publicPath;
+      const assetsPath = clientConfig.output.publicPath;
       const buildFolder = path.relative(process.cwd(), paths.appBuild);
-      printHostingInstructions(
-        appPackage,
-        publicUrl,
-        publicPath,
-        buildFolder,
-        useYarn
-      );
-      console.log(
-        '\n' + chalk.green(`If you encounter problems\nPlease contact us by email : ${chalk.blue(`MAIL@HR.IM`)}`));
-
-      console.log(
-        '\n如果你使用了' +
-        chalk.underline(chalk.yellow('npm run build:prod')) +
-        ' 请将打包后代码递交给CDN/OSS管理员进行发布和更新'
-      );
-
-      console.log()
+      printHostingInstructions(assetsPath, buildFolder);
     },
     err => {
-      const tscCompileOnError = process.env.TSC_COMPILE_ON_ERROR === 'true';
-      if (tscCompileOnError) {
-        console.log(
-          chalk.yellow(
-            'Compiled with the following type errors (you may want to check these before deploying your app):\n'
-          )
-        );
-        printBuildError(err);
-      } else {
-        console.log(chalk.red('Failed to compile.\n'));
-        printBuildError(err);
-        process.exit(1);
-      }
+      console.log(chalk.red('Failed to compile.\n'));
+      printBuildError(err);
+      process.exit(1);
     }
   )
   .catch(err => {
@@ -138,7 +116,7 @@ checkBrowsers(paths.appPath, isInteractive)
     process.exit(1);
   });
 
-// Create the production build and print the deployment instructions.
+// Create the production build for client and server and print the deployment instructions.
 function build(previousFileSizes) {
   // We used to support resolving modules according to `NODE_PATH`.
   // This now has been deprecated in favor of jsconfig/tsconfig.json
@@ -146,7 +124,7 @@ function build(previousFileSizes) {
   if (process.env.NODE_PATH) {
     console.log(
       chalk.yellow(
-        'Setting NODE_PATH to resolve modules absolutely has been deprecated in favor of setting baseUrl in jsconfig.json (or tsconfig.json if you are using TypeScript) and will be removed in a future major release of create-react-app.'
+        'Setting NODE_PATH to resolve modules absolutely has been deprecated in favor of setting baseUrl in jsconfig.json (or tsconfig.json if you are using TypeScript) and will be removed in a future major release of create-react-ssr-app.'
       )
     );
     console.log();
@@ -154,69 +132,104 @@ function build(previousFileSizes) {
 
   console.log('Creating an optimized production build...');
 
-  const compiler = webpack(config);
+  const clientCompiler = webpack(clientConfig);
+  const serverCompiler = webpack(serverConfig);
+  console.log('Compiling client...');
+
   return new Promise((resolve, reject) => {
-    compiler.run((err, stats) => {
-      let messages;
-      if (err) {
-        if (!err.message) {
-          return reject(err);
+    clientCompiler.run((clientErr, clientStats) => {
+      let clientMessages;
+      if (clientErr) {
+        if (!clientErr.message) {
+          return reject(clientErr);
         }
-
-        let errMessage = err.message;
-
-        // Add additional information for postcss errors
-        if (Object.prototype.hasOwnProperty.call(err, 'postcssNode')) {
-          errMessage +=
-            '\nCompileError: Begins at CSS selector ' +
-            err['postcssNode'].selector;
-        }
-
-        messages = formatWebpackMessages({
-          errors: [errMessage],
+        clientMessages = formatWebpackMessages({
+          errors: [clientErr.message],
           warnings: [],
         });
       } else {
-        messages = formatWebpackMessages(
-          stats.toJson({ all: false, warnings: true, errors: true })
+        clientMessages = formatWebpackMessages(
+          clientStats.toJson({ all: false, warnings: true, errors: true })
         );
       }
-      if (messages.errors.length) {
+      if (clientMessages.errors.length) {
         // Only keep the first error. Others are often indicative
         // of the same problem, but confuse the reader with noise.
-        if (messages.errors.length > 1) {
-          messages.errors.length = 1;
+        if (clientMessages.errors.length > 1) {
+          clientMessages.errors.length = 1;
         }
-        return reject(new Error(messages.errors.join('\n\n')));
+        return reject(new Error(clientMessages.errors.join('\n\n')));
       }
       if (
         process.env.CI &&
         (typeof process.env.CI !== 'string' ||
           process.env.CI.toLowerCase() !== 'false') &&
-        messages.warnings.length
+        clientMessages.warnings.length
       ) {
         console.log(
           chalk.yellow(
             '\nTreating warnings as errors because process.env.CI = true.\n' +
-            'Most CI servers set it automatically.\n'
+              'Most CI servers set it automatically.\n'
           )
         );
-        return reject(new Error(messages.warnings.join('\n\n')));
+        return reject(new Error(clientMessages.warnings.join('\n\n')));
       }
+      console.log(chalk.green('Compiled client successfully.'));
 
-      return resolve({
-        stats,
-        previousFileSizes,
-        warnings: messages.warnings,
+      console.log('Compiling server...');
+      serverCompiler.run((serverErr, serverStats) => {
+        let serverMessages;
+        if (serverErr) {
+          if (!serverErr.message) {
+            return reject(serverErr);
+          }
+          serverMessages = formatWebpackMessages({
+            errors: [serverErr.message],
+            warnings: [],
+          });
+        } else {
+          serverMessages = formatWebpackMessages(
+            serverStats.toJson({ all: false, warnings: true, errors: true })
+          );
+        }
+        if (serverMessages.errors.length) {
+          if (serverMessages.errors.length > 1) {
+            serverMessages.errors.length = 1;
+          }
+          return reject(new Error(serverMessages.errors.join('\n\n')));
+        }
+        if (
+          process.env.CI &&
+          (typeof process.env.CI !== 'string' ||
+            process.env.CI.toLowerCase() !== 'false') &&
+          serverMessages.warnings.length
+        ) {
+          console.log(
+            chalk.yellow(
+              '\nTreating warnings as errors because process.env.CI = true.\n' +
+                'Most CI servers set it automatically.\n'
+            )
+          );
+          return reject(new Error(serverMessages.warnings.join('\n\n')));
+        }
+        console.log(chalk.green('Compiled server successfully.'));
+
+        return resolve({
+          stats: clientStats,
+          previousFileSizes,
+          warnings: Object.assign(
+            {},
+            clientMessages.warnings,
+            serverMessages.warnings
+          ),
+        });
       });
-
-
     });
   });
 }
 
 function copyPublicFolder() {
-  fs.copySync(paths.appPublic, paths.appBuild, {
+  fs.copySync(paths.appPublic, paths.appBuildPublic, {
     dereference: true,
     filter: file => file !== paths.appHtml,
   });
