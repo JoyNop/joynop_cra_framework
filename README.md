@@ -1,8 +1,13 @@
 REACT SSR APP
 
 参考:
-Wallet-Render,
-CreateReactApp,
-NextJs,
-VueJS(SSR),
-react-ssr-dev
+
+Wallet-Render(WT),
+
+CreateReactApp(FaceBook),
+
+NextJs(vercel),
+
+VueJS(Evan You),
+
+react-ssr-dev(trustworktech)
