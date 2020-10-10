@@ -29,14 +29,14 @@ import * as service from "@/store/actions/global.action";
 /**
  * 注册路由`/登录`
  */
-const LOGIN_ROUTER = loadable(() => import("./router/login.router"), {
+const LOGIN_ROUTER = loadable(() => import("./page/login.page"), {
   fallback: <InitSpin />,
 });
 
 /**
  * 未知页面
  */
-const ERROR_404_ROUTER = loadable(() => import("./router/error404.router"), {
+const ERROR_404_ROUTER = loadable(() => import("./page/error404.page"), {
   fallback: <InitSpin />,
 });
 

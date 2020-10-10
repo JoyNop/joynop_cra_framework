@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import * as Style from "./style/router.module.less";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import { Link, RouteComponentProps, withRouter } from "react-router-dom";
 import Dashboard from "@/biz/dashboard/dashboard.com";
 
 class DashboardRouter extends Component<RouteComponentProps> {
@@ -9,6 +9,7 @@ class DashboardRouter extends Component<RouteComponentProps> {
     return (
       <div className={Style.component_container}>
         <Dashboard />
+        <Link to="/todo">Todo demo</Link>
       </div>
     );
   }

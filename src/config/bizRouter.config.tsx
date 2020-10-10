@@ -11,7 +11,7 @@ const routes: Array<BizRouter> = [
     exact: true,
     singlePage: false,
     hasMenu: true,
-    component: loadable(() => import("@/router/dashboard.router"), {
+    component: loadable(() => import("@/page/dashboard.page"), {
       fallback: <InitSpin />,
     }),
   },
@@ -22,7 +22,7 @@ const routes: Array<BizRouter> = [
     exact: true,
     singlePage: false,
     hasMenu: true,
-    component: loadable(() => import("@/router/todo.router"), {
+    component: loadable(() => import("@/page/todo.page"), {
       fallback: <InitSpin />,
     }),
   },
